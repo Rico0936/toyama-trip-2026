@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>2026 日本中部北陸舒適同行 7 日遊</title>
+<style>
+:root{
+  --ink:#21313a;
+  --muted:#667780;
+  --line:#dfe9e8;
+  --paper:#ffffff;
+  --mist:#f3f8f7;
+  --blue:#2f75a8;
+  --green:#2b9678;
+  --aqua:#dff3ef;
+  --sky:#e4f0f8;
+  --sun:#fff1d8;
+  --rose:#fae8e5;
+  --shadow:0 10px 30px rgba(28,57,72,.08);
+  --radius:8px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:linear-gradient(180deg,#eef7f6 0,#f8fbfa 340px,#f5f7f6 100%);
+  letter-spacing:0;
+}
+a{color:inherit}
+button,input,textarea{font:inherit}
+.app{
+  width:min(100%,520px);
+  margin:0 auto;
+  padding:14px 14px 86px;
+}
+.hero{
+  position:relative;
+  min-height:310px;
+  border-radius:0 0 8px 8px;
+  margin:-14px -14px 18px;
+  padding:28px 18px 20px;
+  overflow:hidden;
+  color:white;
+  background:
+    linear-gradient(180deg,rgba(13,53,72,.28),rgba(11,44,53,.78)),
+    url("https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=1200&q=80") center/cover;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:auto 18px 16px 18px;
+  height:1px;
+  background:rgba(255,255,255,.26);
+}
+.eyebrow{
+  display:inline-flex;
+  gap:6px;
+  align-items:center;
+  padding:6px 10px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  font-size:12px;
+  backdrop-filter:blur(10px);
+}
+h1{
+  margin:72px 0 12px;
+  font-size:30px;
+  line-height:1.18;
+  font-weight:750;
+  letter-spacing:0;
+}
+.hero p{
+  max-width:320px;
+  margin:0;
+  color:#e8f7f4;
+  line-height:1.7;
+  font-size:14px;
+}
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:20px;
+}
+.stat{
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:8px;
+  padding:10px;
+  background:rgba(255,255,255,.13);
+  backdrop-filter:blur(8px);
+}
+.stat b{display:block;font-size:17px}
+.stat span{font-size:11px;color:#d7eeea}
+.notice{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:13px;
+  box-shadow:var(--shadow);
+  line-height:1.7;
+  font-size:14px;
+}
+.notice strong{color:#0f6c5a}
+.flight-grid{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+.flight-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:12px;
+  box-shadow:0 4px 18px rgba(28,57,72,.05);
+}
+.flight-card h3{margin:0 0 8px;font-size:15px}
+.flight-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+.flight-card b{color:var(--ink)}
+.section-title{
+  margin:24px 2px 12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:12px;
+}
+.section-title h2{
+  margin:0;
+  font-size:19px;
+  letter-spacing:0;
+}
+.section-title span{
+  color:var(--muted);
+  font-size:12px;
+  white-space:nowrap;
+}
+.route-strip{
+  display:flex;
+  overflow-x:auto;
+  gap:8px;
+  padding:2px 0 8px;
+  scrollbar-width:none;
+}
+.route-strip::-webkit-scrollbar,.tabs::-webkit-scrollbar,.photo-row::-webkit-scrollbar{display:none}
+.route-pill{
+  flex:0 0 auto;
+  min-width:92px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--paper);
+  padding:10px;
+  box-shadow:0 4px 16px rgba(28,57,72,.05);
+}
+.route-pill b{display:block;font-size:13px}
+.route-pill span{display:block;margin-top:3px;color:var(--muted);font-size:11px}
+.tabs{
+  position:sticky;
+  top:0;
+  z-index:9;
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  margin:0 -14px 12px;
+  padding:8px 14px;
+  background:rgba(245,249,248,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(223,233,232,.72);
+  scrollbar-width:none;
+}
+.tab{
+  flex:0 0 auto;
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--muted);
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:13px;
+  cursor:pointer;
+}
+.tab.active{
+  background:#1f668f;
+  color:white;
+  border-color:#1f668f;
+}
+.day-card{
+  display:none;
+  overflow:hidden;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  box-shadow:var(--shadow);
+}
+.day-card.active{display:block}
+.day-photo{
+  min-height:180px;
+  padding:14px;
+  color:white;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.day-photo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(12,38,49,.74));
+}
+.day-photo>*{position:relative}
+.day-kicker{font-size:12px;color:#d6f1ec}
+.day-photo h3{margin:88px 0 4px;font-size:23px;line-height:1.25}
+.day-photo p{margin:0;color:#eaf7f5;font-size:13px}
+.day-body{padding:14px}
+.meta-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:12px;
+}
+.meta{
+  border-radius:8px;
+  background:var(--mist);
+  padding:10px;
+  min-height:66px;
+}
+.meta small{display:block;color:var(--muted);font-size:11px}
+.meta b{display:block;margin-top:4px;font-size:13px;line-height:1.35}
+.toggle{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  padding:4px;
+  border-radius:8px;
+  background:#eaf2f1;
+  margin:10px 0 14px;
+}
+.toggle button{
+  border:0;
+  border-radius:7px;
+  padding:9px 6px;
+  color:var(--muted);
+  background:transparent;
+  cursor:pointer;
+}
+.toggle button.on{
+  background:var(--paper);
+  color:var(--ink);
+  box-shadow:0 3px 12px rgba(20,50,64,.09);
+}
+.plan{display:none}
+.plan.on{display:block}
+.item{
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+}
+.item:last-child{border-bottom:0}
+.time{
+  color:#276f9d;
+  font-weight:700;
+  font-size:13px;
+}
+.item h4{
+  margin:0 0 4px;
+  font-size:15px;
+}
+.item p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.65;
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{
+  border-radius:999px;
+  padding:3px 8px;
+  font-size:11px;
+  color:#27515b;
+  background:#e8f3f1;
+}
+.chip.food{background:#fff0d9;color:#74500a}
+.chip.rain{background:#e7eef9;color:#315f91}
+.chip.walk{background:#e6f4e9;color:#2b7140}
+.advice{
+  border-radius:8px;
+  background:#f7fbfb;
+  border:1px solid var(--line);
+  padding:12px;
+  margin-top:12px;
+}
+.advice h4{margin:0 0 7px;font-size:14px}
+.advice ul{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7}
+.photo-row{
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  margin:13px -14px 2px;
+  padding:0 14px 3px;
+  scrollbar-width:none;
+}
+.mini{
+  flex:0 0 132px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--paper);
+}
+.mini img{
+  display:block;
+  width:100%;
+  height:86px;
+  object-fit:cover;
+  background:#dbe8e6;
+}
+.mini b{display:block;padding:7px 8px;font-size:12px;line-height:1.35}
+.cards{
+  display:grid;
+  gap:10px;
+}
+.hotel-card,.food-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 4px 18px rgba(28,57,72,.05);
+}
+.hotel-card img{
+  width:100%;
+  height:130px;
+  object-fit:cover;
+  background:#dbe8e6;
+}
+.hotel-card div,.food-card{padding:12px}
+.hotel-card h3,.food-card h3{margin:0 0 5px;font-size:16px}
+.hotel-card p,.food-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+.food-card{border-left:4px solid #eab85d}
+.source-list{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:12px 14px;
+  font-size:12px;
+  line-height:1.8;
+  color:var(--muted);
+}
+.source-list a{color:#226e9c}
+.comment-box{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:12px;
+  box-shadow:var(--shadow);
+}
+.comment-box label{display:block;margin:8px 0 5px;font-size:12px;color:var(--muted)}
+.comment-box input,.comment-box textarea{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:11px;
+  background:#fbfdfc;
+  color:var(--ink);
+}
+.comment-box textarea{min-height:86px;resize:vertical}
+.primary{
+  margin-top:10px;
+  width:100%;
+  border:0;
+  border-radius:8px;
+  padding:12px;
+  background:#257a98;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+.messages{display:grid;gap:8px;margin-top:12px}
+.message{
+  border-radius:8px;
+  background:#f6faf9;
+  border:1px solid var(--line);
+  padding:10px;
+}
+.message b{font-size:13px}
+.message p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  width:min(calc(100% - 20px),500px);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:4px;
+  border:1px solid rgba(196,216,214,.9);
+  border-radius:8px;
+  padding:5px;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 12px 34px rgba(22,49,63,.18);
+  backdrop-filter:blur(14px);
+  z-index:20;
+}
+.bottom-nav a{
+  text-decoration:none;
+  text-align:center;
+  border-radius:7px;
+  padding:8px 3px;
+  color:var(--muted);
+  font-size:12px;
+}
+.bottom-nav a:focus,.bottom-nav a:hover{background:#edf6f4;color:var(--ink)}
+@media (min-width:700px){
+  .app{padding-top:18px}
+  .hero{border-radius:8px;margin:0 0 18px}
+}
+</style>
+</head>
+<body>
+<main class="app">
+  <section class="hero" id="top">
+    <div class="eyebrow">2026/06/19 - 06/25 · 6 位大人 · D2-D5 包車</div>
+    <h1>日本中部北陸<br>舒適同行 7 日遊</h1>
+    <p>重點放在少走路、少換點、雨天能立即切換。每天以兩個主行程為核心，最多三個，留足午餐與休息時間。</p>
+    <div class="hero-stats">
+      <div class="stat"><b>7 天</b><span>名古屋進出</span></div>
+      <div class="stat"><b>5 間</b><span>Agoda 已訂住宿</span></div>
+      <div class="stat"><b>2-3 點</b><span>每日慢行程</span></div>
+    </div>
+  </section>
+
+  <section class="notice">
+    <strong>路線重新整理：</strong>新版採「機場 → 下呂合掌村 → 高山 → 富山 → 金澤 → 名古屋 → 機場」。D3 保留給富山訪友；白川鄉不放入標準行程，改用下呂溫泉合掌村滿足「看合掌造古屋」的需求，路線更順、移動更少。
+    <div class="flight-grid">
+      <div class="flight-card">
+        <h3>去程 CI150</h3>
+        <p><b>6/19 17:15</b> 台北桃園 TPE Terminal 2 出發<br><b>6/19 21:05</b> 名古屋中部 NGO Terminal 1 抵達<br>建議約 <b>15:15</b> 抵達桃園機場第二航廈。</p>
+      </div>
+      <div class="flight-card">
+        <h3>回程 CI151</h3>
+        <p><b>6/25 09:55</b> 名古屋中部 NGO Terminal 1 出發<br><b>6/25 11:55</b> 台北桃園 TPE Terminal 2 抵達<br>建議約 <b>07:55</b> 抵達中部機場第一航廈。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="route">
+    <div class="section-title">
+      <h2>總覽路線</h2>
+      <span>滑動查看</span>
+    </div>
+    <div class="route-strip">
+      <div class="route-pill"><b>D1 知多</b><span>Centrair Hotel</span></div>
+      <div class="route-pill"><b>D2 高山</b><span>下呂合掌村 + 古街</span></div>
+      <div class="route-pill"><b>D3 富山</b><span>訪友日</span></div>
+      <div class="route-pill"><b>D4 金澤</b><span>富山 → 金澤</span></div>
+      <div class="route-pill"><b>D5 名古屋</b><span>金澤精簡散策</span></div>
+      <div class="route-pill"><b>D6 名古屋</b><span>室內採購日</span></div>
+      <div class="route-pill"><b>D7 返台</b><span>早班機保守安排</span></div>
+    </div>
+  </section>
+
+  <section id="itinerary">
+    <div class="section-title">
+      <h2>每日行程</h2>
+      <span>晴天 / 雨天</span>
+    </div>
+    <div class="tabs" role="tablist" aria-label="每日行程">
+      <button class="tab active" data-day="0">D1</button>
+      <button class="tab" data-day="1">D2</button>
+      <button class="tab" data-day="2">D3</button>
+      <button class="tab" data-day="3">D4</button>
+      <button class="tab" data-day="4">D5</button>
+      <button class="tab" data-day="5">D6</button>
+      <button class="tab" data-day="6">D7</button>
+    </div>
+    <div id="days"></div>
+  </section>
+
+  <section id="hotels">
+    <div class="section-title">
+      <h2>住宿確認</h2>
+      <span>依 Agoda.mhtml</span>
+    </div>
+    <div class="cards" id="hotelCards"></div>
+  </section>
+
+  <section id="food">
+    <div class="section-title">
+      <h2>餐飲建議</h2>
+      <span>椅座優先</span>
+    </div>
+    <div class="cards" id="foodCards"></div>
+  </section>
+
+  <section id="comments">
+    <div class="section-title">
+      <h2>同行留言</h2>
+      <span>存在本機瀏覽器</span>
+    </div>
+    <div class="comment-box">
+      <label for="name">暱稱</label>
+      <input id="name" autocomplete="name" placeholder="例如：二姐">
+      <label for="msg">留言</label>
+      <textarea id="msg" placeholder="想提醒大家的事、想吃的店、或身體狀況都可以寫在這裡。"></textarea>
+      <button class="primary" id="addMessage">新增留言</button>
+      <div class="messages" id="messages"></div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="section-title">
+      <h2>查證來源</h2>
+      <span>官方資訊優先</span>
+    </div>
+    <div class="source-list">
+      <a href="https://www.gero-gassho.jp/lg_en/info/">下呂溫泉合掌村</a>、
+      <a href="https://jinya.gifu.jp/en/guide/info/">高山陣屋</a>、
+      <a href="https://shirakawa-go.gr.jp/en/faq/5/">白川鄉展望台接駁 FAQ</a>、
+      <a href="https://toyama-glass-art-museum.jp/en/visitor/">富山市玻璃美術館</a>、
+      <a href="https://visitkanazawa.jp/en/attractions/detail_10212.html">金澤東茶屋街</a>、
+      <a href="https://www.tcmit.org/english">豐田產業技術紀念館</a>、
+      <a href="https://www.houraiken.com/english/jingu/access.html">蓬萊軒神宮店</a>。
+    </div>
+  </section>
+</main>
+
+<nav class="bottom-nav" aria-label="主要導覽">
+  <a href="#itinerary">行程</a>
+  <a href="#hotels">住宿</a>
+  <a href="#food">美食</a>
+  <a href="#comments">留言</a>
+</nav>
+
+<script>
+const IMG={
+  airport:"https://pix8.agoda.net/hotelImages/812035/-1/2e4f425b18fb4318885a0f6d1d69efba.jpg?ca=7&ce=1",
+  takayama:"https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1200&q=80",
+  shirakawa:"https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1200&q=80",
+  toyama:"https://pix8.agoda.net/hotelImages/4868564/0/13336b98867c7be5927696fd88cac606.jpg?ce=0",
+  kanazawa:"https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?auto=format&fit=crop&w=1200&q=80",
+  nagoya:"https://pix8.agoda.net/hotelImages/51378738/-1/b90d9322660a443147fa4edbd8fee73a.jpg?ce=0"
+};
+
+const days=[
+  {
+    title:"D1 · 6/19（五）抵達中部機場",
+    sub:"晚班機抵達，目標只有入住與休息",
+    bg:IMG.airport,
+    hotel:"Centrair Hotel · 3 間 Pacific Side Building Superior Twin Room B",
+    drive:"機場步行連通，盡量不再拉車",
+    sunny:[
+      ["15:15","抵達桃園機場 T2","CI150 17:15 起飛，建議約 2 小時前抵達桃園第二航廈。",["航班"]],
+      ["21:05","CI150 抵達 NGO T1","名古屋中部國際機場第一航廈抵達，以現場入境與行李速度為準。",["少走路","行李日"]],
+      ["22:00","入住 Centrair Hotel","Agoda 顯示 6/19 15:00 至 6/20 10:00，3 間房、6 位大人。",["住宿"]],
+      ["22:20","簡單晚餐或便利商店","若大家抵達後疲累，以飯店或機場簡餐為主，不安排正式餐廳。",["餐飲"]]
+    ],
+    rain:[
+      ["15:15","抵達桃園機場 T2","雨天或連假時提早出門，保留報到與托運時間。",["航班"]],
+      ["21:05","CI150 抵達 NGO T1","雨天不影響，優先請同行者互相協助推行李。",["雨天無礙"]],
+      ["22:00","入住 Centrair Hotel","直接休息，行李先集中處理，隔日再分裝雨具。",["住宿"]],
+      ["22:20","機場內簡餐","雨天不出航廈，避免抵達第一晚還要移動。",["餐飲"]]
+    ],
+    advice:["第一晚不要排景點。","確認隔天包車上車點，避免早上拖行李找車。"]
+  },
+  {
+    title:"D2 · 6/20（六）下呂合掌村 → 高山",
+    sub:"用順路古屋景點作休息，再進高山古街",
+    bg:IMG.takayama,
+    hotel:"Tokyu Stay Hida Takayama Musubinoyu · Comfort Twin",
+    drive:"D2-D5 全日包車；機場飯店出發，經下呂方向前往高山",
+    sunny:[
+      ["09:00","退房出發往下呂","D2 開始包車，這天以順路移動為主，不安排需要爬坡的城跡。",["包車","休息站"]],
+      ["11:30","下呂溫泉合掌村","官方資訊顯示園內有 10 棟從白川鄉等地移築的合掌造民家，可看古屋又不必繞去白川鄉。",["古屋","少走路"]],
+      ["14:30","高山三町古街短散策","只走核心平坦段，控制 45-60 分鐘，想買伴手禮再下車。",["晴天","步行短"]],
+      ["16:00","入住 Tokyu Stay 高山","Agoda 顯示 6/20 15:00 至 6/21 11:00，可早點回房泡湯休息。",["住宿"]]
+    ],
+    rain:[
+      ["09:00","退房出發往下呂","雨天仍可照走，車上備毛巾與塑膠袋。",["包車"]],
+      ["11:30","下呂合掌村或溫泉街短停","雨勢大時縮短園區停留，重點看主要古屋與足湯區，不硬走完整園。",["雨天彈性"]],
+      ["14:30","高山陣屋或飯店提早入住","若雨勢大，不走古街；高山陣屋官方 4-10 月開到 17:00。",["室內"]],
+      ["16:00","入住 Tokyu Stay 高山","回飯店休息，晚餐選近距離或飯店周邊。",["住宿"]]
+    ],
+    advice:["下呂合掌村是替代白川鄉的省時版本，重點是看古屋，不追求完整戶外散策。","飛驒牛午餐建議預約丸明或味藏天國，並指定椅座。"]
+  },
+  {
+    title:"D3 · 6/21（日）高山 → 富山訪友",
+    sub:"友人只有這天有空，富山時間優先保留",
+    bg:IMG.shirakawa,
+    hotel:"ANA Crowne Plaza Toyama By IHG · 2 Single Premium High Floor",
+    drive:"D2-D5 全日包車；高山至富山約 1.5 小時，上午直接前往富山",
+    sunny:[
+      ["09:00","高山退房，直接前往富山","不排白川鄉，讓上午後段就能抵達富山，訪友時間完整。",["包車"]],
+      ["10:45","富岩運河環水公園或約定地點會合","公園只走運河邊一小段，也可直接到友人方便的餐廳或住處附近。",["訪友","少走路"]],
+      ["12:00","富山朋友午餐聚會","這天以朋友時間為主，餐廳優先選停車方便、椅座、可訂位。",["餐飲"]],
+      ["15:30","富山市玻璃美術館或繼續聚會","若朋友同行可安排室內美術館；若聊得開心，就取消景點。",["彈性","室內"]],
+      ["17:30","入住 ANA Crowne Plaza Toyama","Agoda 顯示 6/21 15:00 至 6/22 11:00，晚上可再安排簡單聚餐。",["住宿"]]
+    ],
+    rain:[
+      ["09:00","高山退房，直接前往富山","雨天更不繞白川鄉，避免山路與村落濕滑。",["包車"]],
+      ["10:45","富山市玻璃美術館或友人約定地點","官方資訊顯示 9:30 開館，常見閉館日為第 1、3 個週三；6/21 是週日，較適合雨天。",["雨天首選"]],
+      ["12:00","富山朋友午餐聚會","若雨大，請朋友協助選車可直達、少排隊的餐廳。",["餐飲"]],
+      ["15:30","咖啡休息或繼續聚會","雨天不加戶外景點，把時間留給朋友與休息。",["彈性"]],
+      ["17:30","入住 ANA Crowne Plaza Toyama","預留乾衣、休息與晚餐時間。",["住宿"]]
+    ],
+    advice:["D3 原則上不排白川鄉，因為友人只有這天有空。","如果仍想看真正白川鄉，建議改成 D4 加繞候補，並刪減金澤景點。"]
+  },
+  {
+    title:"D4 · 6/22（一）富山 → 金澤",
+    sub:"上午保留富山緩衝，下午進金澤",
+    bg:IMG.toyama,
+    hotel:"Mitsui Garden Hotel Kanazawa · Superior 2 Beds",
+    drive:"D2-D5 全日包車；富山至金澤約 1 小時",
+    sunny:[
+      ["10:00","富山緩衝時段","若 D3 訪友時間不足，上午可再約咖啡或簡短見面；否則回環水公園補拍照。",["彈性"]],
+      ["12:00","富山或金澤午餐","看前一晚狀況決定，不為了名店壓縮休息。",["餐飲"]],
+      ["13:30","出發前往金澤","標準路線直接往金澤，不加繞白川鄉。",["包車"]],
+      ["15:00","兼六園平坦核心路線","只走霞池、徽軫燈籠附近核心區，控制 60 分鐘，不追求全園走完。",["經典","步行短"]],
+      ["17:00","入住 Mitsui Garden Hotel Kanazawa","Agoda 顯示 6/22 15:00 至 6/23 11:00，晚餐選近江町市場周邊或飯店附近。",["住宿"]]
+    ],
+    rain:[
+      ["10:00","富山市玻璃美術館或飯店休息","若 D3 已去過玻璃美術館，這段改成晚起與整理行李。",["雨天彈性"]],
+      ["12:00","午餐後前往金澤","雨天提早移動，避免傍晚塞車或濕冷。",["包車"]],
+      ["14:30","金澤 21 世紀美術館或近江町市場","大雨不走園林，改室內美術館或市場周邊用餐採買。",["雨天首選"]],
+      ["17:00","入住金澤","晚餐從飯店步行可達範圍或搭短程計程車。",["住宿"]]
+    ],
+    advice:["標準版不排白川鄉；若臨時決定加繞白川鄉，D4 就只保留白川鄉與入住金澤，兼六園改 D5 或取消。","這天不建議再加立山黑部、峽谷鐵道等耗時長行程。"]
+  },
+  {
+    title:"D5 · 6/23（二）金澤精簡散策 → 名古屋",
+    sub:"金澤只留一到兩個代表點，下午回名古屋",
+    bg:IMG.kanazawa,
+    hotel:"The Royal Park Hotel Iconic Nagoya · Corner Twin，連住 2 晚",
+    drive:"D2-D5 全日包車；金澤至名古屋約 3.5 小時，午餐後出發最穩",
+    sunny:[
+      ["09:30","東茶屋街短停或兼六園補行程","若 D4 已走兼六園，今天選東茶屋街 45 分鐘；若 D4 雨天取消兼六園，今天補核心路線。",["二選一"]],
+      ["11:00","近江町周邊午餐","選可坐下用餐的店，不在市場內久站排隊。",["餐飲"]],
+      ["13:00","出發回名古屋","傍晚前抵達名古屋，避免晚上才找飯店。",["包車"]],
+      ["17:00","入住 Royal Park Iconic Nagoya","Agoda 顯示 6/23 15:00 至 6/25 11:00，晚餐可在中日大樓、榮或飯店附近。",["住宿"]]
+    ],
+    rain:[
+      ["09:30","金澤 21 世紀美術館或近江町市場","大雨不走園林，改室內美術館或市場周邊用餐採買。",["雨天首選"]],
+      ["11:30","金澤午餐","選椅座海鮮料理，避免市場內排隊久站。",["餐飲"]],
+      ["13:00","出發回名古屋","雨天車程保守抓 4 小時。",["包車"]],
+      ["17:30","入住 Royal Park Iconic Nagoya","若疲累，晚餐在飯店同棟或地下街解決。",["住宿"]]
+    ],
+    advice:["兼六園雖美，但不需要全園走完；包車可在近入口處上下車。","東茶屋街石板路雨天濕滑，雨天不硬排。"]
+  },
+  {
+    title:"D6 · 6/24（三）名古屋自由日",
+    sub:"室內博物館 + 名古屋名物 + 地下街採購",
+    bg:IMG.nagoya,
+    hotel:"The Royal Park Hotel Iconic Nagoya · 連住",
+    drive:"D6 市內自行搭車活動，可用計程車、地鐵或飯店協助叫車",
+    sunny:[
+      ["09:45","熱田神宮短參拜","只走主參道核心段，若炎熱就縮短。",["晴天","短走"]],
+      ["11:30","蓬萊軒神宮店午餐","官方資訊：11:30-14:30、16:30-20:30，週二與第 2/4 週一休；6/24 週三可排。",["名物","椅座"]],
+      ["14:00","豐田產業技術紀念館","大型室內、平坦、可坐可看，適合雨天與慢節奏參觀。",["室內"]],
+      ["17:00","榮地下街或百貨採購","從飯店周邊採買即可，不再跨區奔波。",["採購"]]
+    ],
+    rain:[
+      ["10:00","豐田產業技術紀念館","直接作為雨天主行程，官方英文頁列為名古屋代表室內景點。",["雨天首選"]],
+      ["12:30","館內或名古屋站周邊午餐","不排隊優先，可把蓬萊軒改成晚餐候補。",["餐飲"]],
+      ["14:30","榮地下街 + 百貨","地下街連通度高，雨天也不用撐傘移動太久。",["雨天"]],
+      ["17:30","飯店休息整理行李","隔天早班機，這晚不要排夜景或遠距離餐廳。",["收行李"]]
+    ],
+    advice:["若一定要吃蓬萊軒，建議提早到或避開尖峰，盡量避免久站等位。","最後一晚把採購壓在飯店附近，讓行李整理有餘裕。"]
+  },
+  {
+    title:"D7 · 6/25（四）返程台北",
+    sub:"早班機保守抓時間，不安排景點",
+    bg:IMG.airport,
+    hotel:"退房返台",
+    drive:"D7 包車至機場；名古屋市區至中部機場約 50-60 分，早晨仍建議保守",
+    sunny:[
+      ["07:00","飯店退房上車","The Royal Park Hotel Iconic Nagoya Agoda 顯示 11:00 退房，但早班機需 07:00 離開。",["包車"]],
+      ["07:55","抵達中部國際機場 T1","CI151 09:55 起飛，建議約 2 小時前抵達第一航廈。",["機場"]],
+      ["09:55","CI151 起飛返台","11:55 抵達台北桃園第二航廈。",["返程"]]
+    ],
+    rain:[
+      ["06:50","提早 10 分鐘集合","雨天上車與行李裝載較慢。",["雨天"]],
+      ["07:55","抵達中部國際機場 T1","若路況順利，可在機場坐著慢慢等。",["機場"]],
+      ["09:55","CI151 起飛返台","11:55 抵達台北桃園第二航廈，不安排任何追加購物點。",["返程"]]
+    ],
+    advice:["前一晚先把護照、機票、藥品與行動電源集中。","司機集合時間寫清楚飯店入口，避免大樓內外搞錯。"]
+  }
+];
+
+const hotels=[
+  ["6/19","Centrair Hotel","知多 / 中部國際機場連通","3 x Pacific Side Building Superior Twin Room B - Non-Smoking","15:00 入住 / 10:00 退房",IMG.airport],
+  ["6/20","Tokyu Stay Hida Takayama Musubinoyu","高山站旁，適合隔天出發","3 x Comfort Twin Room - Non-Smoking","15:00 入住 / 11:00 退房","https://pix8.agoda.net/hotelImages/8665862/-1/15b5e8553b30802b36225d54d40d427f.jpg?ca=9&ce=1"],
+  ["6/21","ANA Crowne Plaza Toyama By IHG","富山市區，訪友與用餐方便","3 x 2 Single Premium High Floor","15:00 入住 / 11:00 退房",IMG.toyama],
+  ["6/22","Mitsui Garden Hotel Kanazawa","金澤市區，近近江町與兼六園方向","3 x Superior - 2 Beds","15:00 入住 / 11:00 退房","https://pix8.agoda.net/hotelImages/5248901/-1/95c69d58db48fc87a2db879f87e4649c.jpg?ca=9&ce=1"],
+  ["6/23-6/25","The Royal Park Hotel Iconic Nagoya","名古屋榮 / 中日大樓，連住兩晚","3 x History 25th-28th Floor Corner Twin Room","15:00 入住 / 11:00 退房",IMG.nagoya]
+];
+
+const foods=[
+  ["高山午餐","丸明或味藏天國","飛驒牛燒肉，請預約椅座或包廂。若時間延誤，可改高山站附近簡餐，避免等餐太久。"],
+  ["富山晚餐","富山灣壽司 / 白蝦料理","訪友日以餐廳停車方便、座位寬敞為第一條件；壽司玉、車站商場類型通常彈性較高。"],
+  ["金澤晚餐","近江町市場周邊海鮮","市場內不建議久站排隊，可選周邊可訂位餐廳。雨天由飯店叫車來回。"],
+  ["名古屋名物","蓬萊軒神宮店 / 百貨餐廳樓層","蓬萊軒神宮店官方列 120 席，但名店仍可能排隊；建議提早抵達，或改百貨餐廳樓層。"],
+  ["備用策略","便利商店 + 飯店附近餐廳","每天車上備水、鹹餅乾、小包濕紙巾；遇雨或疲累時，取消名店比硬撐更舒服。"]
+];
+
+function chipClass(text){
+  if(/雨|室內/.test(text)) return "rain";
+  if(/餐|名物/.test(text)) return "food";
+  if(/少|短|步/.test(text)) return "walk";
+  return "";
+}
+function renderItems(items){
+  return items.map(([time,title,desc,chips])=>`
+    <div class="item">
+      <div class="time">${time}</div>
+      <div>
+        <h4>${title}</h4>
+        <p>${desc}</p>
+        <div class="chips">${chips.map(c=>`<span class="chip ${chipClass(c)}">${c}</span>`).join("")}</div>
+      </div>
+    </div>
+  `).join("");
+}
+function renderDays(){
+  document.getElementById("days").innerHTML=days.map((d,i)=>`
+    <article class="day-card ${i===0?"active":""}" data-card="${i}">
+      <div class="day-photo" style="background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(12,38,49,.75)),url('${d.bg}')">
+        <div class="day-kicker">${d.title.split(" ")[0]} · 舒適慢行</div>
+        <h3>${d.title.replace(/^D\\d · /,"")}</h3>
+        <p>${d.sub}</p>
+      </div>
+      <div class="day-body">
+        <div class="meta-grid">
+          <div class="meta"><small>住宿</small><b>${d.hotel}</b></div>
+          <div class="meta"><small>移動原則</small><b>${d.drive}</b></div>
+        </div>
+        <div class="toggle" data-toggle="${i}">
+          <button class="on" data-weather="sunny">晴天路線</button>
+          <button data-weather="rain">雨天備案</button>
+        </div>
+        <div class="plan on" data-plan="${i}-sunny">${renderItems(d.sunny)}</div>
+        <div class="plan" data-plan="${i}-rain">${renderItems(d.rain)}</div>
+        <div class="advice">
+          <h4>同行提醒</h4>
+          <ul>${d.advice.map(x=>`<li>${x}</li>`).join("")}</ul>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+function renderHotels(){
+  document.getElementById("hotelCards").innerHTML=hotels.map(h=>`
+    <article class="hotel-card">
+      <img src="${h[5]}" alt="${h[1]}" loading="lazy" onerror="this.style.display='none'">
+      <div>
+        <h3>${h[0]} · ${h[1]}</h3>
+        <p>${h[2]}<br>${h[3]}<br>${h[4]}</p>
+      </div>
+    </article>
+  `).join("");
+}
+function renderFoods(){
+  document.getElementById("foodCards").innerHTML=foods.map(f=>`
+    <article class="food-card">
+      <h3>${f[0]} · ${f[1]}</h3>
+      <p>${f[2]}</p>
+    </article>
+  `).join("");
+}
+function bindTabs(){
+  document.querySelectorAll(".tab").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const day=btn.dataset.day;
+      document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===btn));
+      document.querySelectorAll(".day-card").forEach(x=>x.classList.toggle("active",x.dataset.card===day));
+    });
+  });
+  document.querySelectorAll(".toggle button").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const wrap=btn.closest(".toggle");
+      const idx=wrap.dataset.toggle;
+      wrap.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===btn));
+      document.querySelectorAll(`[data-plan^="${idx}-"]`).forEach(p=>p.classList.remove("on"));
+      document.querySelector(`[data-plan="${idx}-${btn.dataset.weather}"]`).classList.add("on");
+    });
+  });
+}
+function getMessages(){
+  try{return JSON.parse(localStorage.getItem("toyama-trip-messages")||"[]")}catch{return []}
+}
+function saveMessages(items){
+  localStorage.setItem("toyama-trip-messages",JSON.stringify(items));
+}
+function renderMessages(){
+  const items=getMessages();
+  document.getElementById("messages").innerHTML=items.length?items.map(m=>`
+    <div class="message"><b>${escapeHTML(m.name)}</b><p>${escapeHTML(m.text)}</p></div>
+  `).join(""):`<div class="message"><b>尚無留言</b><p>可以先留下集合提醒、餐廳偏好或身體狀況。</p></div>`;
+}
+function escapeHTML(s){
+  return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+document.getElementById("addMessage").addEventListener("click",()=>{
+  const name=document.getElementById("name").value.trim()||"同行旅客";
+  const text=document.getElementById("msg").value.trim();
+  if(!text){document.getElementById("msg").focus();return}
+  const items=getMessages();
+  items.unshift({name,text,ts:Date.now()});
+  saveMessages(items);
+  document.getElementById("msg").value="";
+  renderMessages();
+});
+renderDays();
+renderHotels();
+renderFoods();
+renderMessages();
+bindTabs();
+</script>
+</body>
+</html>
