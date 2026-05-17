@@ -28,6 +28,8 @@ body{
   color:var(--ink);
   background:linear-gradient(180deg,#eef7f6 0,#f8fbfa 340px,#f5f7f6 100%);
   letter-spacing:0;
+  font-size:17px;
+  line-height:1.7;
 }
 a{color:inherit}
 button,input,textarea{font:inherit}
@@ -63,13 +65,13 @@ button,input,textarea{font:inherit}
   border:1px solid rgba(255,255,255,.35);
   border-radius:999px;
   background:rgba(255,255,255,.12);
-  font-size:12px;
+  font-size:15px;
   backdrop-filter:blur(10px);
 }
 h1{
   margin:72px 0 12px;
-  font-size:30px;
-  line-height:1.18;
+  font-size:34px;
+  line-height:1.22;
   font-weight:750;
   letter-spacing:0;
 }
@@ -78,7 +80,7 @@ h1{
   margin:0;
   color:#e8f7f4;
   line-height:1.7;
-  font-size:14px;
+  font-size:18px;
 }
 .hero-stats{
   display:grid;
@@ -93,8 +95,8 @@ h1{
   background:rgba(255,255,255,.13);
   backdrop-filter:blur(8px);
 }
-.stat b{display:block;font-size:17px}
-.stat span{font-size:11px;color:#d7eeea}
+.stat b{display:block;font-size:20px}
+.stat span{font-size:14px;color:#d7eeea}
 .notice{
   background:var(--paper);
   border:1px solid var(--line);
@@ -102,7 +104,7 @@ h1{
   padding:13px;
   box-shadow:var(--shadow);
   line-height:1.7;
-  font-size:14px;
+  font-size:17px;
 }
 .notice strong{color:#0f6c5a}
 .flight-grid{
@@ -117,8 +119,8 @@ h1{
   padding:12px;
   box-shadow:0 4px 18px rgba(28,57,72,.05);
 }
-.flight-card h3{margin:0 0 8px;font-size:15px}
-.flight-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+.flight-card h3{margin:0 0 8px;font-size:18px}
+.flight-card p{margin:0;color:var(--muted);font-size:16px;line-height:1.75}
 .flight-card b{color:var(--ink)}
 .section-title{
   margin:24px 2px 12px;
@@ -129,12 +131,12 @@ h1{
 }
 .section-title h2{
   margin:0;
-  font-size:19px;
+  font-size:22px;
   letter-spacing:0;
 }
 .section-title span{
   color:var(--muted);
-  font-size:12px;
+  font-size:15px;
   white-space:nowrap;
 }
 .route-strip{
@@ -154,8 +156,8 @@ h1{
   padding:10px;
   box-shadow:0 4px 16px rgba(28,57,72,.05);
 }
-.route-pill b{display:block;font-size:13px}
-.route-pill span{display:block;margin-top:3px;color:var(--muted);font-size:11px}
+.route-pill b{display:block;font-size:16px}
+.route-pill span{display:block;margin-top:3px;color:var(--muted);font-size:14px}
 .tabs{
   position:sticky;
   top:0;
@@ -176,8 +178,8 @@ h1{
   background:var(--paper);
   color:var(--muted);
   border-radius:999px;
-  padding:8px 13px;
-  font-size:13px;
+  padding:10px 16px;
+  font-size:17px;
   cursor:pointer;
 }
 .tab.active{
@@ -209,9 +211,9 @@ h1{
   background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(12,38,49,.74));
 }
 .day-photo>*{position:relative}
-.day-kicker{font-size:12px;color:#d6f1ec}
-.day-photo h3{margin:88px 0 4px;font-size:23px;line-height:1.25}
-.day-photo p{margin:0;color:#eaf7f5;font-size:13px}
+.day-kicker{font-size:15px;color:#d6f1ec}
+.day-photo h3{margin:80px 0 6px;font-size:28px;line-height:1.25}
+.day-photo p{margin:0;color:#eaf7f5;font-size:17px}
 .day-body{padding:14px}
 .meta-grid{
   display:grid;
@@ -225,8 +227,8 @@ h1{
   padding:10px;
   min-height:66px;
 }
-.meta small{display:block;color:var(--muted);font-size:11px}
-.meta b{display:block;margin-top:4px;font-size:13px;line-height:1.35}
+.meta small{display:block;color:var(--muted);font-size:14px}
+.meta b{display:block;margin-top:4px;font-size:16px;line-height:1.5}
 .toggle{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -239,7 +241,7 @@ h1{
 .toggle button{
   border:0;
   border-radius:7px;
-  padding:9px 6px;
+  padding:12px 8px;
   color:var(--muted);
   background:transparent;
   cursor:pointer;
@@ -253,32 +255,32 @@ h1{
 .plan.on{display:block}
 .item{
   display:grid;
-  grid-template-columns:54px 1fr;
-  gap:10px;
-  padding:12px 0;
+  grid-template-columns:62px 1fr;
+  gap:12px;
+  padding:15px 0;
   border-bottom:1px solid var(--line);
 }
 .item:last-child{border-bottom:0}
 .time{
   color:#276f9d;
   font-weight:700;
-  font-size:13px;
+  font-size:17px;
 }
 .item h4{
   margin:0 0 4px;
-  font-size:15px;
+  font-size:19px;
 }
 .item p{
   margin:0;
   color:var(--muted);
-  font-size:13px;
-  line-height:1.65;
+  font-size:17px;
+  line-height:1.75;
 }
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .chip{
   border-radius:999px;
   padding:3px 8px;
-  font-size:11px;
+  font-size:14px;
   color:#27515b;
   background:#e8f3f1;
 }
@@ -292,8 +294,8 @@ h1{
   padding:12px;
   margin-top:12px;
 }
-.advice h4{margin:0 0 7px;font-size:14px}
-.advice ul{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7}
+.advice h4{margin:0 0 7px;font-size:18px}
+.advice ul{margin:0;padding-left:22px;color:var(--muted);font-size:17px;line-height:1.75}
 .photo-row{
   display:flex;
   gap:9px;
@@ -316,7 +318,7 @@ h1{
   object-fit:cover;
   background:#dbe8e6;
 }
-.mini b{display:block;padding:7px 8px;font-size:12px;line-height:1.35}
+.mini b{display:block;padding:8px 9px;font-size:15px;line-height:1.45}
 .cards{
   display:grid;
   gap:10px;
@@ -335,15 +337,15 @@ h1{
   background:#dbe8e6;
 }
 .hotel-card div,.food-card{padding:12px}
-.hotel-card h3,.food-card h3{margin:0 0 5px;font-size:16px}
-.hotel-card p,.food-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+.hotel-card h3,.food-card h3{margin:0 0 5px;font-size:19px}
+.hotel-card p,.food-card p{margin:0;color:var(--muted);font-size:17px;line-height:1.75}
 .food-card{border-left:4px solid #eab85d}
 .source-list{
   background:var(--paper);
   border:1px solid var(--line);
   border-radius:8px;
   padding:12px 14px;
-  font-size:12px;
+  font-size:15px;
   line-height:1.8;
   color:var(--muted);
 }
@@ -355,7 +357,7 @@ h1{
   padding:12px;
   box-shadow:var(--shadow);
 }
-.comment-box label{display:block;margin:8px 0 5px;font-size:12px;color:var(--muted)}
+.comment-box label{display:block;margin:8px 0 5px;font-size:16px;color:var(--muted)}
 .comment-box input,.comment-box textarea{
   width:100%;
   border:1px solid var(--line);
@@ -383,8 +385,8 @@ h1{
   border:1px solid var(--line);
   padding:10px;
 }
-.message b{font-size:13px}
-.message p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+.message b{font-size:17px}
+.message p{margin:4px 0 0;color:var(--muted);font-size:17px;line-height:1.65}
 .bottom-nav{
   position:fixed;
   left:50%;
@@ -408,7 +410,7 @@ h1{
   border-radius:7px;
   padding:8px 3px;
   color:var(--muted);
-  font-size:12px;
+  font-size:15px;
 }
 .bottom-nav a:focus,.bottom-nav a:hover{background:#edf6f4;color:var(--ink)}
 @media (min-width:700px){
@@ -519,7 +521,7 @@ h1{
       <a href="https://shirakawa-go.gr.jp/en/faq/5/">白川鄉展望台接駁 FAQ</a>、
       <a href="https://toyama-glass-art-museum.jp/en/visitor/">富山市玻璃美術館</a>、
       <a href="https://visitkanazawa.jp/en/attractions/detail_10212.html">金澤東茶屋街</a>、
-      <a href="https://www.tcmit.org/english">豐田產業技術紀念館</a>、
+      <a href="https://www.tokugawa-art-museum.jp/usage/?vm=r">德川美術館</a>、
       <a href="https://www.houraiken.com/english/jingu/access.html">蓬萊軒神宮店</a>。
     </div>
   </section>
@@ -655,11 +657,11 @@ const days=[
     sunny:[
       ["09:45","熱田神宮短參拜","只走主參道核心段，若炎熱就縮短。",["晴天","短走"]],
       ["11:30","蓬萊軒神宮店午餐","官方資訊：11:30-14:30、16:30-20:30，週二與第 2/4 週一休；6/24 週三可排。",["名物","椅座"]],
-      ["14:00","豐田產業技術紀念館","大型室內、平坦、可坐可看，適合雨天與慢節奏參觀。",["室內"]],
+      ["14:00","德川園 / 德川美術館","天氣好可走德川園核心區，若炎熱或想少走路就直接進德川美術館。",["晴雨皆可"]],
       ["17:00","榮地下街或百貨採購","從飯店周邊採買即可，不再跨區奔波。",["採購"]]
     ],
     rain:[
-      ["10:00","豐田產業技術紀念館","直接作為雨天主行程，官方英文頁列為名古屋代表室內景點。",["雨天首選"]],
+      ["10:00","德川美術館","雨天直接作為主行程。官方資訊顯示開館時間 10:00-17:00，週一休館；6/24 是週三，可排。",["雨天首選"]],
       ["12:30","館內或名古屋站周邊午餐","不排隊優先，可把蓬萊軒改成晚餐候補。",["餐飲"]],
       ["14:30","榮地下街 + 百貨","地下街連通度高，雨天也不用撐傘移動太久。",["雨天"]],
       ["17:30","飯店休息整理行李","隔天早班機，這晚不要排夜景或遠距離餐廳。",["收行李"]]
